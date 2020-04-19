@@ -5,6 +5,11 @@ body{
 	margin: 0;
 }
 
+.container{
+	margin-right: 0;
+	margin-left: 20px; 
+}
+
 /* HOME PAGE */
 
 #header-nav{
