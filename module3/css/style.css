@@ -42,8 +42,18 @@ body{
 
 section{
 	padding: 10px;
-	background: #EDEDED;
+	
 	margin-bottom: 20px;
+}
+
+.box{
+	transition: box-shadow .3s;
+	background: #F7F7F7;
+}
+
+.box:hover{
+	background: #EDEDED;
+	box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
 #Chicken h4{
