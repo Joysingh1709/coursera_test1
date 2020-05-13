@@ -1,0 +1,29 @@
+<div class="container">
+<div class="row">
+    <div class="col-sm-6">
+        <div *ngIf ="dish" class="card">            
+                <img src="{{dish.image}}" class="card-img-top" alt="{{dish.name}}">
+                <div class="card-body"> 
+                    <h3 class="card-title font-weight-bold">{{dish.name | uppercase}}</h3>
+                    <p class="card-text">{{dish.description}}</p>
+                    <span>
+                        <button type="button" class="btn btn-secondary">Like</button>
+                        <button type="button" class="btn btn-secondary">Share</button>  
+                    </span>                  
+                </div>            
+        </div>
+    </div>
+    <div class="col-sm-6">    
+        <div *ngIf ="dish" class="card">
+            <div class="card-header font-weight-bold">Comments</div>
+            <ul class="list-group list-group-flush">
+                <li *ngFor = "let c of (dish.comments)" class="list-group-item">
+                    <p>{{c.comment}}</p>
+                    <p>{{c.rating}} Stars</p>
+                    <p>-- {{c.author}}, {{c.date | date}} </p>
+                </li>
+              </ul>
+        </div>
+    </div>
+</div>
+</div>
