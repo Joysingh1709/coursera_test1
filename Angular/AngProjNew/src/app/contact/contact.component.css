@@ -1,0 +1,18 @@
+hr{
+    width: 95%;
+    position: relative;
+    height: 0,5px;
+    background: black;
+    border-radius: 8px;
+}
+
+.material-icons {
+    font-size: 16px !important;
+    margin-right: 8px !important;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+}

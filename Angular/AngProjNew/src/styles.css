@@ -24,3 +24,89 @@ body {padding: 0;
 .list-group-item:hover {
     background: #F7F7F7;
 }
+
+.container_fluid {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.text-jumbo {
+    font-size: 2rem !important;
+    font-weight: bold !important;
+}
+
+.gap-20 {
+    margin-left: 20px;
+}
+
+.gap-10 {
+    margin-left: 10px;
+}
+
+.gap-5 {
+    margin-left: 5px;
+    
+}
+
+.nav-div {
+    float: left;
+}
+
+.inner-item {
+    padding: 0;
+}
+
+.material-icons {
+    line-height: 0.8;
+}
+
+.zoom {
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+}
+
+.zoom:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+.jumbotron {
+    background-color: rgba(173, 129, 255, 0.507);
+}
+
+.right-img {
+    float: right;
+    margin-right: 15px;
+}
+
+.jumbotron-fluid {
+    margin-bottom: 0;
+}
+
+@media (max-width: 990px) {
+    .right-img {
+        float: left !important;
+    }
+}
+
+li, ol {
+    list-style: none;
+}
+
+.add-tab {
+    padding: 5px !important;
+    margin: 0 !important;   
+}
+
+.about-title {
+    padding: 20px;
+    padding-bottom: 0 !important;
+    margin-left: 20px !important;
+    font-size: 1.8rem !important;
+    font-weight: bold !important;
+    margin-bottom: 0 !important;
+}
+
+.map {
+    padding: 10px;
+    padding-top: 0 !important;
+}
