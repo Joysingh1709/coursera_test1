@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
 
-        <div *ngFor="let dish of dishes" class="card col-lg-4 col-md-6 col-sm-12" (click)='onSelect(dish)'>
+        <div *ngFor="let dish of dishes" class="card col-lg-4 col-md-6 col-sm-12" [routerLink] = "['/dishdetails',dish.id]">
             <img src="{{dish.image}}" height="200px" class="card-img-top" alt="{{dish.name}}">
             <div class="card-body">                
                     <h2 class="card-title">{{dish.name | uppercase}}</h2>
@@ -11,5 +11,3 @@
         </div>
     </div>
 </div>
-
-<app-dishdetail [dish]="selectedDish"></app-dishdetail>

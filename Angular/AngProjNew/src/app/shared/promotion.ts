@@ -1,9 +1,9 @@
 export class Promotion {
-    id: String;
-    name: String;
-    image: String;
-    label: String;
-    price: String;
+    id: string;
+    name: string;
+    image: string;
+    label: string;
+    price: string;
     featured: boolean;
     description: string;
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
 
-        <div *ngFor="let dish of dishes" class="card col-lg-4 col-md-6 col-sm-12" (click)='onSelect(dish)'>
+        <div *ngIf = "dish" class="card col-lg-4 col-md-6 col-sm-12">
             <img src="{{dish.image}}" height="200px" class="card-img-top" alt="{{dish.name}}">
             <div class="card-body">                
                     <h2 class="card-title">{{dish.name | uppercase}}</h2>
@@ -9,7 +9,14 @@
                     <p class="card-text">{{dish.description}}</p>
             </div>
         </div>
+
+        <div *ngIf = "promotion" class="card col-lg-4 col-md-6 col-sm-12">
+            <img src="{{promotion.image}}" height="200px" class="card-img-top" alt="{{dish.name}}">
+            <div class="card-body">                
+                    <h2 class="card-title">{{promotion.name | uppercase}}</h2>
+                    <h4>${{promotion.price}}</h4>
+                    <p class="card-text">{{promotion.description}}</p>
+            </div>
+        </div>
     </div>
 </div>
-
-<app-dishdetail [dish]="selectedDish"></app-dishdetail>

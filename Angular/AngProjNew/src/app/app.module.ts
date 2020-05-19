@@ -39,7 +39,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
   providers: [
     DishService,
     PromotionService
-
+    
   ],
   
   bootstrap: [AppComponent]
