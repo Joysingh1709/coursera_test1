@@ -18,5 +18,14 @@
                     <p class="card-text">{{promotion.description}}</p>
             </div>
         </div>
+
+        <div *ngIf = "FeaturedLeader" class="card col-lg-4 col-md-6 col-sm-12">
+            <img src="{{FeaturedLeader.image}}" height="200px" class="card-img-top" alt="{{FeaturedLeader.name}}">
+            <div class="card-body">                
+                    <h2 class="card-title">{{FeaturedLeader.name | uppercase}} ({{FeaturedLeader.abbr}})</h2>
+                    <h4>{{FeaturedLeader.designation}}</h4>
+                    <p class="card-text">{{FeaturedLeader.description}}</p>
+            </div>
+        </div>
     </div>
 </div>
