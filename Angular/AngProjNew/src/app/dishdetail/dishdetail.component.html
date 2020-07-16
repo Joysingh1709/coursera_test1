@@ -1,21 +1,44 @@
 <div class="container">
 <div class="row">
-    <div class="col-sm-6">
-        <div *ngIf ="dish" class="card">            
-                <img src="{{dish.image}}" class="card-img-top" alt="{{dish.name}}">
+    <div *ngIf ="dish" class="col-sm-6" [@visibility]="visibility" [@expand]>
+        <div class="card">            
+                <img src="{{BaseURL+ dish.image}}" class="card-img-top" alt="{{dish.name}}">
                 <div class="card-body"> 
                     <h3 class="card-title font-weight-bold">{{dish.name | uppercase}}</h3>
                     <p class="card-text">{{dish.description}}</p>
                     <span>
-                        <button type="button" class="btn btn-secondary" (click) = "goBack()">Back</button>
-                        <button type="button" class="btn btn-secondary">Like</button>
-                        <button type="button" class="btn btn-secondary">Share</button>  
+                        <table>
+                            <tr>
+                                <td>
+                                    <button type="button" [routerLink]="['/dishdetails', prev]" class="btn btn-secondary">Prev</button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary" (click) = "goBack()">Back</button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary">Like</button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary">Share</button>
+                                </td>
+                                <td>
+                                    <button type="button" [routerLink] = "['/dishdetails', next]" class="btn btn-secondary">Next</button>
+                                </td>
+                            </tr>
+                        </table>
                     </span>                  
                 </div>            
         </div>
+        <div [hidden]="dish || errMsg" class="spinner-border text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div *ngIf="errMsg">
+            <h1>Error</h1>
+            <h3>{{errMsg}}</h3>
+      </div>
     </div>
-    <div class="col-sm-6">    
-        <div *ngIf ="dish" class="card">
+    <div *ngIf ="dish" class="col-sm-6" [@visibility]="visibility" [@expand]>    
+        <div class="card">
             <div class="card-header font-weight-bold">Comments</div>
             <ul class="list-group list-group-flush">
                 <li *ngFor = "let c of (dish.comments)" class="list-group-item">
@@ -23,8 +46,51 @@
                     <p>{{c.rating}} Stars</p>
                     <p>-- {{c.author}}, {{c.date | date}} </p>
                 </li>
-              </ul>
+            </ul>
+            <form novalidate [formGroup]="commentFrom" (ngSubmit) = "commentSubmit()">
+                <ul *ngIf="commentFrom.valid" class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <p>{{cmtFormPrev.comment}}</p>
+                        <p>{{cmtFormPrev.rating}} Stars</p>
+                        <p>-- {{cmtFormPrev.author}}</p>
+                    </li>
+                </ul>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Name</mat-label>
+                            <input [(ngModel)] = "cmtFormPrev.author" formControlName="author" matInput placeholder="Enter your Name">
+                            <mat-error *ngIf="cmtFormErrors.author">
+                                {{cmtFormErrors.author}}
+                            </mat-error> 
+                          </mat-form-field>
+                        
+                          <mat-form-field class="example-full-width">
+                            <mat-label>Leave a comment</mat-label>
+                            <textarea [(ngModel)] = "cmtFormPrev.comment" formControlName="comment" matInput rows="3" placeholder="Your comment"></textarea>
+                            <mat-error *ngIf="cmtFormErrors.comment">
+                                {{cmtFormErrors.comment}}
+                            </mat-error> 
+                        </mat-form-field>
+                        
+                            <div class="form-inline">
+                                <p class="rating">Star Rating -</p>
+                                <mat-slider thumbLabel
+                                [(ngModel)] = "cmtFormPrev.rating"
+                                formControlName="rating"
+                                class="slide-rating"
+                                tickInterval="1"
+                                min="1"
+                                max="5" step="1"></mat-slider>
+                            </div>
+                        <button class="btn btn-outline-secondary" type="submit">Submit</button>
+                </li>
+            </ul>
+        </form>
         </div>
+        <div [hidden]="dish" class="spinner-border text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
     </div>
 </div>
 </div>

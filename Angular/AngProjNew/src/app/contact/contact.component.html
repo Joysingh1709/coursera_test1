@@ -4,8 +4,8 @@
 <hr>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row address">
+        <div class="col-md-6" [@expand]>
                 <h2>Our Address -</h2>
                 <ul>
                     <li class="add-tab">121, Clear water
@@ -26,7 +26,7 @@
                 </ul>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" [@expand]>
             <div class="map">
                 <span>
                     <h2>Location</h2>
@@ -35,4 +35,110 @@
             </div>
         </div>
     </div>
+</div>
+
+<h1 class="about-title">
+    Give us a Feedback -
+</h1>
+<hr>
+
+<div *ngIf="formVisibility;" class="container-form" [@expand]>
+    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col-lg-6">
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+                <mat-error *ngIf= "formErrors.firstname">
+                    {{formErrors.firstname}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastname" placeholder="Last name" type="text" required>
+                <mat-error *ngIf= "formErrors.lastname">
+                    {{formErrors.lastname}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Tel No.</mat-label>
+                <input  matInput formControlName="telnum" placeholder="Tel No." type="tel" pattern="[0-9]*" required>
+                <mat-error *ngIf= "formErrors.telnum">
+                    {{formErrors.telnum}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-lg-6">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Email" type="email" email required>
+                <mat-error *ngIf= "formErrors.email">
+                    {{formErrors.email}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        </div>
+        
+            <div class="row">
+                <div class="col-lg-6">
+                    <mat-slide-toggle formControlName="agree">
+                        May we contact you?            
+                    </mat-slide-toggle>
+                </div>
+                <div class="col-lg-6">
+                    <mat-select placeholder="How?" formControlName="contacttype">
+                            <mat-option *ngFor="let ctype of contactType" [value]="ctype">
+                                {{ ctype }}
+                            </mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                <mat-form-field appearance="fill" class="text-area">
+                    <mat-label>Feedback</mat-label>
+                    <textarea  formControlName="message" placeholder="Text area" matInput rows="20"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="accent" type="submit">Submit</button>
+            </div>
+
+            </div>
+
+            <div *ngIf="errMsg">
+                <h1>Error Submiting the form</h1>
+                <h3>{{errMsg}}</h3>
+            </div>
+    </form>
+</div>
+
+<!-- Form Preview -->
+<div class="container-form" *ngIf="prevVisibility" [@expand]>
+    <h1>Your Submission</h1>
+    <span>
+        <h2>Name : {{feedbackCopy.firstname}}</h2>
+        <h2>Lastname : {{feedbackCopy.lastname}}</h2>
+        <h2>Tel No. : {{feedbackCopy.telnum}}</h2>
+        <h2>Email : {{feedbackCopy.email}}</h2>
+        <h2>How we contact you : {{feedbackCopy.contacttype}}</h2>
+        <h2>Your Feedback : {{feedbackCopy.message}}</h2>
+    </span>
+</div>
+
+<!-- Loading Spinner -->
+<div class="container-form" *ngIf="spinnerVisibility" [@expand]>
+    <h1>Submiting form please wait...</h1>
+    <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
 </div>

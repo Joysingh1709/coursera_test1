@@ -10,16 +10,24 @@ body {padding: 0;
 }
 
 .card {
+    padding-top: 10px;
     margin-bottom: 20px;
     margin-top: 20px;
     transition: box-shadow .3s;
-	background: #F7F7F7;
+    background-color: #EDEDED;
+    background: linear-gradient(
+        #F7F7F7, rgba(237, 237, 237, 0.582) 50%, #65717D 75%, #343a40
+  );
+  /* 65717D */
+  background-size: 100% 202%;
+  transition: all 0.2s ease;
+  animation: down-bump 0.4s ease;
 }
 
-.card:hover {
+/* .card:hover {
     background: #EDEDED;
-	box-shadow: 0 0 11px rgba(33,33,33,.2);
-}
+	
+} */
 
 .list-group-item:hover {
     background: #F7F7F7;
@@ -109,6 +117,17 @@ li, ol {
 .map {
     padding: 10px;
     padding-top: 0 !important;
+    margin-left: 100px;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.text-area {
+    width: 500px;
+}
+
+.highlight {
+    background-position: 100% 100%;
+    box-shadow: 0 0 11px rgba(24, 24, 24, 0.205);
+    z-index: 5;
+    transform: scale(1.1);
+    color: white;
+}

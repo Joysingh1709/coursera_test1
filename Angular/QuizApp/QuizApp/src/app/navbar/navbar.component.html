@@ -1,0 +1,26 @@
+    <nav class="navbar top navbar-expand-lg navbar-dark">
+            <img class="logo navbar-brand" src="../assets/images/quizLogo.png" height="90px" width="190px">
+
+                <button (click)="this.quizService.opened = !this.quizService.opened" class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <mat-icon class="menu-icon">dehaze</mat-icon>
+                </button>
+                
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                        <li class="nav-items" routerLink='/register' routerLinkActive="active">
+                                Register
+                        </li>
+                        <li class="nav-items" routerLink='/quiz' routerLinkActive="active">
+                                Quiz
+                        </li>
+                        <li class="nav-items" routerLink='/result' routerLinkActive="active">
+                                Result
+                        </li>                           
+                </ul>
+                <span>
+                        <ul class="navbar-nav">
+                        <button (click)="signOut()" class="sign-out">Sign out</button>
+                        </ul>
+                </span>
+            </div>
+    </nav> 

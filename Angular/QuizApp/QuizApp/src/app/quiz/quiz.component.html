@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+
+<div class="card" *ngIf="quizService.questions && quizService.qnProgress != 10">
+    <div class="card-header">
+        Q{{quizService.qnProgress+1}}. {{quizService.questions[quizService.qnProgress].Qn}}.
+    </div>
+    <img *ngIf="quizService.questions[quizService.qnProgress].image" src="../assets/{{quizService.questions[quizService.qnProgress].image}}" class="card-img-top" alt="...">
+
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <ng-container *ngFor="let optn of quizService.questions[quizService.qnProgress].options; let i = index">
+                <li *ngIf="optn != null" (click)="selectAnswer(quizService.questions[quizService.qnProgress].QnId, i)" class="list-group-item">
+                  {{i+1}}. {{optn.option}}
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" [style.width.%]="(quizService.qnProgress+1)*10" aria-valuemin="0" aria-valuemax="100">
+            {{quizService.displayTimeElapsed()}}</div>
+      </div>
+</div>

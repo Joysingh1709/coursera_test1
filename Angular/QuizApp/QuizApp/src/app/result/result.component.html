@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+
+<div class="card mb-3 result">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img *ngIf="quizService.correctAnsCount != 0" class="card-img" src="../assets/images/trophy.gif">
+            <img *ngIf="quizService.correctAnsCount == 0" class="card-img" src="../assets/images/fail.gif">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h1 *ngIf="quizService.correctAnsCount != 0" class="card-title">Congratulations!</h1>
+                <h1 *ngIf="quizService.correctAnsCount == 0" class="card-title">Failed..!</h1>
+                <p *ngIf="quizService.correctAnsCount != 0" class="card-text">{{quizService.username}} You've Completed the Quiz..!</p>
+                <p *ngIf="quizService.correctAnsCount == 0" class="card-text">{{quizService.username}} You've failed the Quiz..!</p>
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                  <button *ngIf="quizService.correctAnsCount != 0" (click)="tooltip.toggle()" #tooltip="matTooltip" matTooltip="Click to Submit the score" mat-button (click)="onSubmit()" color="primary">Submit</button>
+                  <button mat-button (click)="restart()" color="accent">Repeat</button>
+                </mat-button-toggle-group>
+                <p class="card-text score"> <img src="../assets/images/star.gif" style="width: 50px; height: 40px;">Your Score - {{quizService.correctAnsCount}} / 10</p>
+                <p *ngIf="quizService.correctAnsCount" class="card-text"><small class="text-muted">Time-Elapsed : {{quizService.displayTimeElapsed()}}</small></p>                
+            </div>
+            
+        </div>
+        
+    </div>
+    <hr class="seperation">
+
+
+    <div class="col-md-12 que-container">
+        <h2>Questions with the correct answers :</h2>
+
+        <mat-accordion *ngFor="let qn of quizService.questions; let i=index" class="example-headers-align">
+            <mat-expansion-panel (opened)="setStep(0)" (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Q.{{i+1}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  view correct answer
+                  <mat-icon style="color: #40E50A;" *ngIf="qn.correct==qn.answer">check_circle</mat-icon>
+                  <mat-icon color="warn" *ngIf="qn.correct!=qn.answer">clear</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <h4>{{qn.Qn}}</h4>
+          
+              <mat-list>
+                <ng-container *ngFor="let op of qn.options; let j=index">  
+                <mat-list-item>{{op.option}}
+                    <mat-icon style="color: #40E50A;" *ngIf="qn.correct==j">check_circle</mat-icon>
+                    <mat-icon color="warn" *ngIf=" qn.answer==j && qn.correct!=j">clear</mat-icon>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                </ng-container>
+              </mat-list>
+
+              <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          
+          </mat-accordion>        
+</div>

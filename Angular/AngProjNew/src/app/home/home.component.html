@@ -1,31 +1,52 @@
 <div class="container">
     <div class="row">
 
-        <div *ngIf = "dish" class="card col-lg-4 col-md-6 col-sm-12">
-            <img src="{{dish.image}}" height="200px" class="card-img-top" alt="{{dish.name}}">
+        <div *ngIf = "dish" class="card col-lg-4 col-md-6 col-sm-12" [@expand]>
+            <img src="{{BaseURL + dish.image}}" height="200px" class="card-img-top" alt="{{dish.name}}">
             <div class="card-body">                
                     <h2 class="card-title">{{dish.name | uppercase}}</h2>
                     <h4>${{dish.price}}</h4>
                     <p class="card-text">{{dish.description}}</p>
             </div>
         </div>
+        <div [hidden]="dish || errMsg" class="spinner-border text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div *ngIf="errMsg">
+            <h1>Error</h1>
+            <h3>{{errMsg}}</h3>
+        </div>
 
-        <div *ngIf = "promotion" class="card col-lg-4 col-md-6 col-sm-12">
-            <img src="{{promotion.image}}" height="200px" class="card-img-top" alt="{{dish.name}}">
+        <div *ngIf = "promotion" class="card col-lg-4 col-md-6 col-sm-12" [@expand]>
+            <img src="{{BaseURL + promotion.image}}" height="200px" class="card-img-top" alt="{{dish.name}}">
             <div class="card-body">                
                     <h2 class="card-title">{{promotion.name | uppercase}}</h2>
                     <h4>${{promotion.price}}</h4>
                     <p class="card-text">{{promotion.description}}</p>
             </div>
         </div>
+        <div [hidden]="promotion || errMsg" class="spinner-border text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+            <div *ngIf="errMsg">
+                <h1>Error</h1>
+                <h3>{{errMsg}}</h3>
+            </div>
 
-        <div *ngIf = "FeaturedLeader" class="card col-lg-4 col-md-6 col-sm-12">
-            <img src="{{FeaturedLeader.image}}" height="200px" class="card-img-top" alt="{{FeaturedLeader.name}}">
+        <div *ngIf = "FeaturedLeader || errMsg" class="card col-lg-4 col-md-6 col-sm-12" [@expand]>
+            <img src="{{BaseURL + FeaturedLeader.image}}" height="200px" class="card-img-top" alt="{{FeaturedLeader.name}}">
             <div class="card-body">                
                     <h2 class="card-title">{{FeaturedLeader.name | uppercase}} ({{FeaturedLeader.abbr}})</h2>
                     <h4>{{FeaturedLeader.designation}}</h4>
                     <p class="card-text">{{FeaturedLeader.description}}</p>
             </div>
         </div>
+        <div [hidden]="FeaturedLeader || errMsg" class="spinner-border text-secondary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div *ngIf="errMsg">
+                <h1>Error</h1>
+                <h3>{{errMsg}}</h3>
+          </div>
     </div>
 </div>

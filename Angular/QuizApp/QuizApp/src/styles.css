@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+button:checked{
+    border: none !important;
+}
+
+.background{
+    background-image: url('assets/images/background2.jpg');
+    height: 100%;
+}
+
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+mat-sidenav-container{
+    background: none !important;
+}
+
+.side-nav{
+    background-color: yellow;
+    width: 100px;
+}
+
+.app-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+
+.logo{
+    margin: 12px;
+    padding-left: 12px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+  
+.example-full-width {
+    margin-bottom: 40px !important;
+    width: 100%;
+}
+
+.label-text{
+    font-size: 1.1rem;
+}
+
+.mat-drawer{
+    background-color: #f2f2f2e7 !important;
+}
+
+@media (max-width: 1500px) {
+    .navbar-collapse{
+        margin-left: 200px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar-collapse{
+        margin-left: 90px !important;
+    }
+    .nav-items{
+        margin-right: 20px !important;
+    }
+}

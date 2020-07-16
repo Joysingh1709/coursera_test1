@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+
+
+
+<div class="app-container">
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				
+                <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login100-form flex-sb flex-w">
+
+					<span class="login100-form-title p-b-53">
+						Register
+                    </span>
+
+					<mat-form-field class="example-full-width">
+						<mat-label class="label-text">Name</mat-label>
+						<input matInput formControlName="name" placeholder="Ex. pat@example.com">
+				
+						<mat-error *ngIf= "formErrors.name">
+							{{formErrors.name}}
+						</mat-error>
+					</mat-form-field>
+    
+					<mat-form-field class="example-full-width">
+						<mat-label class="label-text">Email</mat-label>
+						<input matInput formControlName="email" placeholder="Ex. pat@example.com">
+						<mat-hint>e.g. abc@def.com</mat-hint>
+						
+						<mat-error *ngIf="formErrors.email">
+							{{formErrors.email}}
+						</mat-error>
+					  </mat-form-field>
+
+					<div class="container-login100-form-btn m-t-17">
+						<button [disabled] ="!registerForm.valid"  type="submit" class="login100-form-btn">
+							Start
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

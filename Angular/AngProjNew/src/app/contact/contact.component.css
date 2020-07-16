@@ -16,3 +16,22 @@ a{
     color: inherit;
     font-weight: 500;
 }
+
+.container-form{
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: auto;
+    padding: 20px;
+    display: block;
+}
+
+.address{
+    padding: 20px;
+    width: 100% !important;
+}
+
+.row{
+    padding: 20px;
+    width: 50%;
+}

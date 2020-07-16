@@ -1,0 +1,30 @@
+<mat-sidenav-container class="example-container">
+        <mat-sidenav #sidenav [(opened)]="this.quizService.opened" >
+
+            <div>
+                <mat-nav-list class="account">
+                <mat-list-item class="menu-acc" role="listitem">
+                    <mat-icon>account_circle</mat-icon>
+                    <h3 *ngIf="quizService.username" routerLink='/register'>{{quizService.username}}</h3>
+                    <h3 *ngIf="!quizService.username" routerLink='/register'>Login!</h3>
+                </mat-list-item>
+                </mat-nav-list>
+            </div>
+
+    
+                <mat-nav-list>
+                    <mat-list-item class="side-nav-item" role="listitem" routerLink='/register' routerLinkActive="active">Register</mat-list-item>
+                    <mat-list-item class="side-nav-item" role="listitem" routerLink='/quiz' routerLinkActive="active">Quiz</mat-list-item>
+                    <mat-list-item class="side-nav-item" role="listitem" routerLink='/result' routerLinkActive="active">Result</mat-list-item>
+                    <mat-list-item class="side-nav-item signOut" role="listitem">
+                        <button type="button" class="btn btn-warning" [disabled]="quizService.userLog" (click)="signOut()"><mat-icon class="exit">exit_to_app</mat-icon>Sign out</button>
+                    </mat-list-item>
+                </mat-nav-list>
+
+            </mat-sidenav>
+    
+        <mat-sidenav-content>
+            <main><router-outlet></router-outlet></main>
+        </mat-sidenav-content>
+    
+</mat-sidenav-container>
